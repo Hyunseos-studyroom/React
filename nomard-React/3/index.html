@@ -6,17 +6,21 @@
   <script  src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
   <div id="root"></div>
   <script type="text/babel">
-    const root = document.getElementById("root");
-    const Title = () => (
-            <h3 id={"title"} onMouseEnter={() => console.log("mouseenter")}>
-                Hello Im h3
-            </h3>
-    );
+    const DOM = ReactDOM.createRoot(document.getElementById("root"))
 
-    const Button = () => ( <button style={{backgroundColor: "tomato"}} onClick={() => console.log("im clicked")}>Click me!</button> );
-
-    const container = <div><Title /> <Button /></div>;
-    ReactDOM.createRoot(root).render(container);
+    function App() {
+      const [counter, modifier] = React.useState(66);
+      console.log(counter)
+      return (
+        <div>
+          <h3>Total clicks: {counter[0]}</h3>
+          <button>Click me</button>
+        </div>
+      )
+    }
+    DOM.render(
+            <App />
+    )
   </script>
 </body>
 </html>
