@@ -6,8 +6,18 @@
   <div id="root"></div>
   <script>
     const root = document.getElementById("root");
-    const span = React.createElement("span", {id: "sexy-span"}, "Hello Im span");
-    ReactDOM.createRoot(root).render(span);
+
+    const h3 = React.createElement("h3", {
+      onMouseEnter: () => console.log("mouseenter")
+    }, "Hello Im span");
+
+    const button = React.createElement("button", {
+      onClick: () => console.log("Im clicked")
+    }, "Click me");
+
+    const container = React.createElement("div", null, [h3, button]);
+
+    ReactDOM.createRoot(root).render(container);
   </script>
 </body>
 </html>
