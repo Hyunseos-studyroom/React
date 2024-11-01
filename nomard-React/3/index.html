@@ -9,7 +9,7 @@
     const DOM = ReactDOM.createRoot(document.getElementById("root"))
     function App() {
       const [amount, setAmount] = React.useState();
-      const [flipped, setFlipped] = React.useState();
+      const [inverted, setInverted] = React.useState();
       const onChange = (e) => {
         setAmount(e.target.value);
       }
@@ -18,21 +18,21 @@
       }
       const onFlip = () => {
         Reset();
-          setFlipped((current) => !current);
+        setInverted((current) => !current);
       }
       return (
               <div>
                 <h1>Super Converter</h1>
                 <div>
                   <label htmlFor="minutes">Minutes</label>
-                  <input onChange={onChange} disabled={flipped} value={flipped ? amount * 60 : amount} id="minutes" placeholder="Minutes" type="number"/>
+                  <input onChange={onChange} disabled={inverted} value={inverted ? amount * 60 : amount} id="minutes" placeholder="Minutes" type="number"/>
                 </div>
                 <div>
                   <label htmlFor="hours">Hours</label>
-                  <input id="hours" onChange={onChange} disabled={!flipped} value={flipped ? amount : Math.round(amount / 60)} placeholder="Hours" type="number"/>
+                  <input id="hours" onChange={onChange} disabled={!inverted} value={inverted ? amount : Math.round(amount / 60)} placeholder="Hours" type="number"/>
                 </div>
                 <button onClick={Reset}>Reset</button>
-                <button onClick={onFlip}>Flip</button>
+                <button onClick={onFlip}>{inverted ? "Turn Back" : "Invert"}</button>
               </div>
       )
     }
